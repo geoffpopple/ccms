@@ -9,12 +9,13 @@
   // Keep JSON validation for real JSON files elsewhere
 "json.validate.enable": true,
 "cSpell.words": [
-    "CCMS",
-    "docmaps",
-    "esbenp",
-    "jsonify",
-    "leftnav",
-    "tamasfe",
-    "budparr",
+  "budparr",
+  "CCMS",
+  "docmaps",
+  "esbenp",
+  "goldmark",
+  "jsonify",
+  "leftnav",
+  "tamasfe"
 ]
 }
