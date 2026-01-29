@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="doc-version">
+  <h1>{{ .Title }}</h1>
+  {{ $manual := .Params.manual }}
+  {{ $version := .Params.version }}
+  {{ $seq := .Params.sequence }}
+
+  {{ $candidates := where .Site.RegularPages "Section" "snippets" }}
+  {{ $selected := slice }}
+  {{ range $candidates }}
+    {{ $m := .Params.manuals }}
+    {{ $v := .Params.versions }}
+    {{ if and (in $m $manual) (in $v $version) (not .Draft) }}
+      {{ $selected = $selected | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ if and $seq (gt (len $seq) 0) }}
+    {{ range $id := $seq }}
+      {{ $snip := first 1 (where $selected ".Params.snippetID" $id) | first }}
+      {{ if $snip }}
+        <section class="snippet" id="{{ $snip.Params.snippetID }}">
+          <h2>{{ $snip.Title }}</h2>
+          <div class="snippet-body">{{ $snip.Content }}</div>
+        </section>
+      {{ else }}
+        <section class="snippet missing">
+          <h2>Missing snippet: {{ $id }}</h2>
+          <div class="snippet-body">No snippet with this snippetID was found.</div>
+        </section>
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ $ordered := sort $selected "Params.order" "asc" }}
+    {{ if eq (len $ordered) 0 }}
+      <p>No snippets matched manual "{{ $manual }}" and version "{{ $version }}".</p>
+    {{ end }}
+    {{ range $snip := $ordered }}
+      <section class="snippet" id="{{ $snip.Params.snippetID }}">
+        <h2>{{ $snip.Title }}</h2>
+        <div class="snippet-body">{{ $snip.Content }}</div>
+      </section>
+    {{ end }}
+  {{ end }}
+</article>
+{{ end }}

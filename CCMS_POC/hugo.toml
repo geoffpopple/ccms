@@ -1,0 +1,24 @@
+baseURL = "/"
+title = "TCE and DE Doc Builder"
+languageCode = "en-au"
+
+# Allow HTML in Markdown bodies when needed
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+# JSON media type and output format so docmaps can emit /index.json
+[mediaTypes."application/json"]
+suffixes = ["json"]
+
+[outputFormats.JSON]
+mediaType = "application/json"
+baseName = "index"
+isPlainText = true
+notAlternative = true
+
+# Default outputs for most pages
+[outputs]
+home = ["HTML"]
+section = ["HTML"]
+page = ["HTML"]

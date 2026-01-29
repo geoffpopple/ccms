@@ -1,0 +1,7 @@
+(function(){const s=document.getElementById("container"),o=document.getElementById("separator"),e=document.getElementById("right-pane");let t=!1;o.addEventListener("mousedown",e=>{t=!0,document.body.style.cursor="col-resize",e.preventDefault()}),window.addEventListener("mousemove",e=>{if(!t)return;const n=220,o=Math.min(600,window.innerWidth-400),i=Math.max(n,Math.min(o,e.clientX));s.style.gridTemplateColumns=`${i}px 6px 1fr`}),window.addEventListener("mouseup",()=>{t=!1,document.body.style.cursor="default"});function n(e){return String(e).replace(/[&<>"']/g,e=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[e]))}function i(t){const s=`<h1>${n(t.title||"")}</h1>`,o=(t.snippets||[]).map(e=>`
+      <section class="snippet" id="${n(e.snippetID||"")}">
+        <h2>${n(e.title||"")}</h2>
+        <div class="snippet-body">${e.html||""}</div>
+      </section>
+    `).join(`
+`);e.innerHTML=`<article class="doc-version">${s}${o}</article>`,e.scrollTop=0}async function a(t){const n=t.target.closest("a.version-link");if(!n)return;t.preventDefault();const s=n.getAttribute("data-json");e.innerHTML=`<p>Loading…</p>`;try{const e=await fetch(s,{headers:{Accept:"application/json"}});if(!e.ok)throw new Error(`HTTP ${e.status}`);const t=await e.json();i(t),history.replaceState(null,"",n.href)}catch(t){e.innerHTML=`<p style="color:#f87171">Failed to load. ${String(t)}</p>`}}document.addEventListener("click",a)})()

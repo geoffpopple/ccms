@@ -1,0 +1,40 @@
+{{- $manual := .Params.manual -}}
+{{- $version := .Params.version -}}
+{{- $seq := .Params.sequence -}}
+{{- $candidates := where .Site.RegularPages "Section" "snippets" -}}
+{{- $selected := slice -}}
+{{- range $candidates -}}
+  {{- $m := .Params.manuals -}}
+  {{- $v := .Params.versions -}}
+  {{- if and (in $m $manual) (in $v $version) (not .Draft) -}}
+    {{- $selected = $selected | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $ordered := cond (and $seq (gt (len $seq) 0)) (slice) (sort $selected "Params.order" "asc") -}}
+{{- if and $seq (gt (len $seq) 0) -}}
+  {{- $tmp := slice -}}
+  {{- range $id := $seq -}}
+    {{- $snip := first 1 (where $selected ".Params.snippetID" $id) | first -}}
+    {{- if $snip -}}{{- $tmp = $tmp | append $snip -}}{{- end -}}
+  {{- end -}}
+  {{- $ordered = $tmp -}}
+{{- end -}}
+{
+  "title": {{ .Title | jsonify }},
+  "manual": {{ $manual | jsonify }},
+  "version": {{ $version | jsonify }},
+  "count": {{ len $ordered }},
+  "snippets": [
+  {{- range $i, $snip := $ordered -}}
+    {{- if gt $i 0 }},{{ end -}}
+    {
+      "snippetID": {{ $snip.Params.snippetID | jsonify }},
+      "title": {{ $snip.Title | jsonify }},
+      "order": {{ $snip.Params.order | default 0 }},
+      "tags": {{ $snip.Params.tags | default (slice) | jsonify }},
+      "html": {{ $snip.Content | jsonify }}
+    }
+  {{- end -}}
+  ]
+}

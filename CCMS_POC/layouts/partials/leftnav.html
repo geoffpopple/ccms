@@ -1,0 +1,33 @@
+<nav class="nav-tree">
+  <ul class="docs">
+    {{ $docmaps := .Site.GetPage "section" "docmaps" }}
+    {{ if $docmaps }}
+      {{ range sort $docmaps.Sections "Title" "asc" }}
+        <li class="doc">
+          <div class="doc-name">{{ .Title }}</div>
+          <ul class="versions">
+            {{ $pages := .Pages }}
+            {{ if gt (len (where $pages "Weight" "gt" 0)) 0 }}
+              {{ $pages = $pages.ByWeight }}
+            {{ else }}
+              {{ $pages = $pages.ByParam "version" }}
+            {{ end }}
+            {{ range $pages }}
+              <li>
+                {{ $json := .OutputFormats.Get "JSON" }}
+                <a class="version-link"
+                   href="{{ .RelPermalink }}"
+                   data-json="{{ $json.RelPermalink }}"
+                   data-title="{{ .Title }}">
+                  {{ .Params.version }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </li>
+      {{ end }}
+    {{ else }}
+      <li>No docmaps found.</li>
+    {{ end }}
+  </ul>
+</nav>

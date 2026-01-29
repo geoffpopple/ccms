@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Site.Title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+  {{ partial "header.html" . }}
+
+  <div id="container">
+    <aside id="left-pane" aria-label="Documents">
+      {{ partial "leftnav.html" . }}
+    </aside>
+
+    <div id="separator" title="Drag to resize" role="separator" aria-orientation="vertical" aria-label="Resize panels"></div>
+
+    <main id="right-pane" aria-live="polite">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+
+  {{ partial "footer.html" . }}
+
+  {{ $js := resources.Get "js/app.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+</body>
+</html>

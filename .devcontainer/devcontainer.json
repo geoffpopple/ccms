@@ -1,0 +1,45 @@
+{
+  "name": "hugo-codespace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/hugo:1": {
+      "version": "0.154.5",
+      "extended": true
+    }
+  },
+
+  // Mount the repo at a stable path, independent of repo name
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/site,type=bind,consistency=cached",
+
+  // Open the Codespaces workspace directly in your site folder
+  "workspaceFolder": "/workspaces/site/CCMS_POC",
+
+  "forwardPorts": [1313],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.trimFinalNewlines": true,
+        "files.insertFinalNewline": true,
+
+        // Ensure terminals open in the site folder
+        "terminal.integrated.cwd": "/workspaces/site/CCMS_POC"
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "tamasfe.even-better-toml",
+        "streetsidesoftware.code-spell-checker",
+        "budparr.language-hugo-vscode"
+      ]
+    }
+  },
+
+  "postCreateCommand": "hugo version || true"
+}

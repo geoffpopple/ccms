@@ -1,0 +1,19 @@
+{
+  "title": "Terrain Admin Manual V2.2",
+  "manual": "Terrain Admin Manual",
+  "version": "V2.2",
+  "count": 2,
+  "snippets": [{
+      "snippetID": "login-warning",
+      "title": "Login Warning",
+      "order": 10,
+      "tags": [],
+      "html": "\u003cp\u003eIf SSO is enabled, ensure the IdP claim includes the role attribute before first login.\u003c/p\u003e\n"
+    },{
+      "snippetID": "backup-procedure",
+      "title": "Backup Procedure",
+      "order": 30,
+      "tags": [],
+      "html": "\u003cp\u003eRun \u003ccode\u003eterrain-admin backup --all\u003c/code\u003e weekly…\u003c/p\u003e\n"
+    }]
+}

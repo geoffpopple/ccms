@@ -1,0 +1,20 @@
+
+{
+  // Treat Hugo layout JSON templates as HTML (Go template) instead of JSON
+  "files.associations": {
+    "*.json.json": "html",
+    "**/layouts/**/*.json": "html"
+  },
+
+  // Keep JSON validation for real JSON files elsewhere
+"json.validate.enable": true,
+"cSpell.words": [
+    "CCMS",
+    "docmaps",
+    "esbenp",
+    "jsonify",
+    "leftnav",
+    "tamasfe",
+    "budparr",
+]
+}
