@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/docmaps/dealer-roles-and-responsibilities/</loc>
+    <loc>//localhost:1313/docmaps/dealer-roles-and-responsibilities/</loc>
   </url><url>
-    <loc>http://localhost:1313/docmaps/dealer-roles-and-responsibilities/january-2026/</loc>
+    <loc>//localhost:1313/docmaps/dealer-roles-and-responsibilities/january-2026/</loc>
   </url><url>
-    <loc>http://localhost:1313/docmaps/terrain-admin-manual/v2-1/</loc>
+    <loc>//localhost:1313/docmaps/terrain-admin-manual/v2-1/</loc>
   </url><url>
-    <loc>http://localhost:1313/docmaps/terrain-admin-manual/v2-2/</loc>
+    <loc>//localhost:1313/docmaps/terrain-admin-manual/v2-2/</loc>
   </url><url>
-    <loc>http://localhost:1313/snippets/backup-procedure/</loc>
+    <loc>//localhost:1313/snippets/backup-procedure/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>//localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/docmaps/</loc>
+    <loc>//localhost:1313/docmaps/</loc>
   </url><url>
-    <loc>http://localhost:1313/snippets/login-warning/</loc>
+    <loc>//localhost:1313/snippets/login-warning/</loc>
   </url><url>
-    <loc>http://localhost:1313/snippets/</loc>
+    <loc>//localhost:1313/snippets/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>//localhost:1313/</loc>
   </url><url>
-    <loc>http://localhost:1313/docmaps/terrain-admin-manual/</loc>
+    <loc>//localhost:1313/docmaps/terrain-admin-manual/</loc>
   </url><url>
-    <loc>http://localhost:1313/snippets/ui-changes-v21/</loc>
+    <loc>//localhost:1313/snippets/ui-changes-v21/</loc>
   </url>
 </urlset>
